@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MonsterType" load_steps=4 format=3 uid="uid://tb1lc0ld6vw5"]
+
+[ext_resource type="Texture2D" uid="uid://clucdum7vuwbd" path="res://sprites/Young red dragon.png" id="1_s6sih"]
+[ext_resource type="Script" path="res://Assets/MonsterType.gd" id="1_wh42s"]
+[ext_resource type="Resource" uid="uid://cijya22gouatq" path="res://Assets/Database/Items/Weapons/Greataxe.tres" id="3_8463o"]
+
+[resource]
+script = ExtResource("1_wh42s")
+displayName = "Young Red Dragon"
+sizeCategory = 3
+hpRoll = "17d10+85"
+armorClass = 18
+weaponType = ExtResource("3_8463o")
+bodySprite = ExtResource("1_s6sih")

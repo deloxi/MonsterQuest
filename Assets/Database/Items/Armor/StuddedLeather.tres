@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArmorType" load_steps=2 format=3 uid="uid://4i1fx7rtenr5"]
+
+[ext_resource type="Script" path="res://Assets/ArmorType.gd" id="1_w6rkr"]
+
+[resource]
+script = ExtResource("1_w6rkr")
+armorCategory = 0
+armorClass = 12
+displayName = "Studded Leather"
+weight = 13

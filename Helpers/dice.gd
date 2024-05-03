@@ -2,10 +2,14 @@ extends Node
 
 class_name Dice
 
-@export var dice_count: int = 1
-@export var dice_sides: int = 6
-@export var modifier: int = 0
-@export var rolls: Array = []
+#@export var dice_count: int = 1
+var dice_count: int
+var dice_sides: int
+var modifier: int
+var rolls: Array = []
+#@export var dice_sides: int = 6
+#@export var modifier: int = 0
+#@export var rolls: Array = []
 
 var _random = RandomNumberGenerator.new()
 
@@ -39,6 +43,8 @@ func parse_dice_string(dice_string:String):
 	if has_modifier:
 		var mod = int(parts[parts.size()-1])
 		modifier = mod*(-1 if dice_string.contains("-") else 1)
+	else:
+		modifier = 0
 		
 	var dice_parts = parts[0].split("d")
 	if dice_parts.size() == 2 and dice_parts[0] != "":
@@ -48,7 +54,8 @@ func parse_dice_string(dice_string:String):
 		
 	dice_sides = int(dice_parts[-1])
 	
-func roll() -> int:
+func roll(diceString: String) -> int:
+	parse_dice_string(diceString)
 	rolls.clear()
 	var total = 0
 	for i in range(dice_count):

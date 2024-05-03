@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://frsegamen2i3"]
+
+[ext_resource type="Script" path="res://Managers/gameManager.gd" id="1_bjkok"]
+[ext_resource type="Script" path="res://Helpers/dice.gd" id="2_o3oqc"]
+[ext_resource type="PackedScene" uid="uid://b27g5h6p3myt0" path="res://console.tscn" id="3_3satt"]
+[ext_resource type="Script" path="res://Managers/combatManager.gd" id="4_mqwab"]
+[ext_resource type="Script" path="res://Model/monster.gd" id="5_awkmy"]
+[ext_resource type="Script" path="res://Model/character.gd" id="6_bv7dd"]
+[ext_resource type="Script" path="res://Model/party.gd" id="7_kyioi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv83t"]
+bg_color = Color(0.701961, 0.572549, 0.427451, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_bjkok")
+
+[node name="Dice" type="Node" parent="."]
+script = ExtResource("2_o3oqc")
+
+[node name="Console" parent="." instance=ExtResource("3_3satt")]
+offset_left = 196.0
+offset_top = 115.0
+offset_right = 941.0
+offset_bottom = 519.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rv83t")
+
+[node name="Combat" type="Node" parent="."]
+script = ExtResource("4_mqwab")
+
+[node name="Monster" type="Node" parent="."]
+script = ExtResource("5_awkmy")
+
+[node name="Character" type="Node" parent="."]
+script = ExtResource("6_bv7dd")
+
+[node name="Party" type="Node" parent="."]
+script = ExtResource("7_kyioi")

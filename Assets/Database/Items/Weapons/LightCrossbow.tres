@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WeaponType" load_steps=2 format=3 uid="uid://gbka6qkfovat"]
+
+[ext_resource type="Script" path="res://Assets/WeaponType.gd" id="1_oy6ob"]
+
+[resource]
+script = ExtResource("1_oy6ob")
+dmgRoll = "1d8"
+displayName = "Light Crossbow"
+weight = 5

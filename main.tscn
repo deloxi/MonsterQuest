@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://frsegamen2i3"]
+[gd_scene load_steps=8 format=3 uid="uid://frsegamen2i3"]
 
 [ext_resource type="Script" path="res://Managers/gameManager.gd" id="1_bjkok"]
 [ext_resource type="Script" path="res://Helpers/dice.gd" id="2_o3oqc"]
 [ext_resource type="PackedScene" uid="uid://b27g5h6p3myt0" path="res://console.tscn" id="3_3satt"]
 [ext_resource type="Script" path="res://Managers/combatManager.gd" id="4_mqwab"]
+[ext_resource type="Texture2D" uid="uid://du2h1eoavnr1n" path="res://sprites/Troll.png" id="6_gol3s"]
+[ext_resource type="PackedScene" uid="uid://b8sqn4r2x8ttn" path="res://creature.tscn" id="8_uyc67"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv83t"]
 bg_color = Color(0.701961, 0.572549, 0.427451, 1)
@@ -16,17 +18,42 @@ border_color = Color(0, 0, 0, 1)
 [node name="Game" type="Node2D"]
 script = ExtResource("1_bjkok")
 
+[node name="BackgroundColor" type="ColorRect" parent="."]
+z_index = -10
+offset_right = 1153.0
+offset_bottom = 644.0
+color = Color(0.701961, 0.572549, 0.427451, 1)
+
 [node name="Dice" type="Node" parent="."]
 script = ExtResource("2_o3oqc")
-dice_count = 3
-dice_sides = 10
 
 [node name="Console" parent="." instance=ExtResource("3_3satt")]
-offset_left = 196.0
-offset_top = 115.0
-offset_right = 941.0
-offset_bottom = 519.0
+offset_left = 180.0
+offset_top = 418.0
+offset_right = 944.0
+offset_bottom = 592.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rv83t")
 
-[node name="Combat" type="Node" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("4_mqwab")
+
+[node name="PartySlot0" parent="Node2D" instance=ExtResource("8_uyc67")]
+position = Vector2(180, 115)
+scale = Vector2(0.25, 0.25)
+
+[node name="PartySlot1" parent="Node2D" instance=ExtResource("8_uyc67")]
+position = Vector2(405, 79)
+scale = Vector2(0.25, 0.25)
+
+[node name="PartySlot2" parent="Node2D" instance=ExtResource("8_uyc67")]
+position = Vector2(632, 88)
+scale = Vector2(0.25, 0.25)
+
+[node name="PartySlot3" parent="Node2D" instance=ExtResource("8_uyc67")]
+position = Vector2(855, 125)
+scale = Vector2(0.25, 0.25)
+
+[node name="MonsterSlot" parent="Node2D" instance=ExtResource("8_uyc67")]
+position = Vector2(551, 270)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("6_gol3s")

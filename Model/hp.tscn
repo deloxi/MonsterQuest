@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch7t51ifwfo07"]
+
+[ext_resource type="Script" path="res://Model/hp.gd" id="1_sx5rl"]
+[ext_resource type="Texture2D" uid="uid://ku5ncfdqpbc2" path="res://sprites/Stand medium.png" id="2_wgr5f"]
+
+[sub_resource type="Gradient" id="Gradient_5j5ia"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f71q5"]
+gradient = SubResource("Gradient_5j5ia")
+width = 400
+height = 330
+
+[node name="Hp" type="Node2D"]
+z_index = -1
+script = ExtResource("1_sx5rl")
+
+[node name="StandMedium2" type="Sprite2D" parent="."]
+modulate = Color(0.345098, 0.117647, 0.0784314, 1)
+texture = ExtResource("2_wgr5f")
+
+[node name="Mask" type="Sprite2D" parent="."]
+clip_children = 1
+texture = SubResource("GradientTexture2D_f71q5")
+
+[node name="StandMedium" type="Sprite2D" parent="Mask"]
+modulate = Color(1, 0.180392, 0.180392, 1)
+texture = ExtResource("2_wgr5f")

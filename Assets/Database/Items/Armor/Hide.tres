@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArmorType" load_steps=2 format=3 uid="uid://b2k3mlpvc7tnq"]
+
+[ext_resource type="Script" path="res://Assets/ArmorType.gd" id="1_p6xav"]
+
+[resource]
+script = ExtResource("1_p6xav")
+armorCategory = 1
+armorClass = 15
+displayName = "Leather harness"
+weight = 10

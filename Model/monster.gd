@@ -3,7 +3,7 @@ class_name Monster extends Creature
 var savingThrowDC: int
 var monster: MonsterType
 var size
-var dice: Dice = Dice.new()
+#var dice: Dice = Dice.new()
 var tween = Tween.new()
 @onready var attack_anim: AnimationPlayer = $AttackAnim
 

@@ -35,7 +35,7 @@ func _ready():
 	var orc3type:MonsterType = load("res://Assets/Database/Monster/Orc3.tres")
 	var youngRedDragon:MonsterType = load("res://Assets/Database/Monster/YoungRedDragon.tres")
 	
-	monsters.append(Monster.new(orc1type))
+	#monsters.append(Monster.new(orc1type))
 	monsters.append(Monster.new(youngRedDragon))
 	#monsters.append(Monster.new(orc2type))
 	#monsters.append(Monster.new(orc3type))

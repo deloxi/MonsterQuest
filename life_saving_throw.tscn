@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtqk4jb6xafdf"]
+
+[ext_resource type="Texture2D" uid="uid://bjkoihigl8rpq" path="res://sprites/Death saving throw.png" id="1_w25ui"]
+
+[node name="LifeSavingThrow" type="TextureRect"]
+texture = ExtResource("1_w25ui")

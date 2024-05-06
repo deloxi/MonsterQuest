@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjngki78vnlwx"]
+
+[ext_resource type="Texture2D" uid="uid://clwt0wbq4sifv" path="res://sprites/Death saving throw fail.png" id="1_737fp"]
+
+[node name="DeathSavingThrow" type="TextureRect"]
+texture = ExtResource("1_737fp")

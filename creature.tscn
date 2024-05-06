@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8sqn4r2x8ttn"]
+[gd_scene load_steps=11 format=3 uid="uid://b8sqn4r2x8ttn"]
 
 [ext_resource type="PackedScene" uid="uid://ch7t51ifwfo07" path="res://Model/hp.tscn" id="1_x5364"]
+[ext_resource type="Texture2D" uid="uid://bmdgun0llqm8u" path="res://sprites/D20.png" id="2_dr23j"]
 
 [sub_resource type="SystemFont" id="SystemFont_kb6ry"]
 subpixel_positioning = 0
@@ -34,6 +35,71 @@ _data = {
 "attackAnim": SubResource("Animation_w1dpy")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_r0gv6"]
+font_size = 61
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_dnhla"]
+resource_name = "dice_toss"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0001, 1.0001, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-6.28319, 6.28319, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_7y2qj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o7hpx"]
+_data = {
+"RESET": SubResource("Animation_7y2qj"),
+"dice_toss": SubResource("Animation_dnhla")
+}
+
 [node name="CreatureSprite" type="Sprite2D"]
 
 [node name="Label" type="Label" parent="."]
@@ -59,3 +125,29 @@ offset_right = 489.0
 offset_bottom = 83.0
 size_flags_horizontal = 4
 label_settings = SubResource("LabelSettings_jqsgs")
+
+[node name="SaveThrowBox" type="HBoxContainer" parent="."]
+offset_left = -274.0
+offset_top = -450.0
+offset_right = 277.0
+offset_bottom = -339.0
+alignment = 1
+
+[node name="DiceSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(332, -251)
+rotation = -6.28319
+texture = ExtResource("2_dr23j")
+
+[node name="DiceLabel" type="Label" parent="DiceSprite"]
+offset_left = -51.0
+offset_top = -42.0
+offset_right = 56.0
+offset_bottom = 42.0
+label_settings = SubResource("LabelSettings_r0gv6")
+horizontal_alignment = 1
+
+[node name="DiceToss" type="AnimationPlayer" parent="DiceSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_o7hpx")
+}

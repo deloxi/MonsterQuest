@@ -29,31 +29,31 @@ script = ExtResource("2_o3oqc")
 
 [node name="Console" parent="." instance=ExtResource("3_3satt")]
 offset_left = 180.0
-offset_top = 418.0
+offset_top = 456.0
 offset_right = 944.0
-offset_bottom = 592.0
+offset_bottom = 630.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rv83t")
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("4_mqwab")
 
 [node name="PartySlot0" parent="Node2D" instance=ExtResource("8_uyc67")]
-position = Vector2(180, 115)
+position = Vector2(180, 112)
 scale = Vector2(0.25, 0.25)
 
 [node name="PartySlot1" parent="Node2D" instance=ExtResource("8_uyc67")]
-position = Vector2(405, 79)
+position = Vector2(405, 111)
 scale = Vector2(0.25, 0.25)
 
 [node name="PartySlot2" parent="Node2D" instance=ExtResource("8_uyc67")]
-position = Vector2(632, 88)
+position = Vector2(632, 113)
 scale = Vector2(0.25, 0.25)
 
 [node name="PartySlot3" parent="Node2D" instance=ExtResource("8_uyc67")]
-position = Vector2(855, 125)
+position = Vector2(855, 113)
 scale = Vector2(0.25, 0.25)
 
 [node name="MonsterSlot" parent="Node2D" instance=ExtResource("8_uyc67")]
-position = Vector2(551, 270)
+position = Vector2(551, 324)
 scale = Vector2(0.33, 0.33)
 texture = ExtResource("6_gol3s")

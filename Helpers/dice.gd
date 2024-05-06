@@ -66,6 +66,7 @@ func roll(diceString: String) -> int:
 
 
 static func rollWithDice(diceAmount, diceSides, modifier):
+	randomize()
 	var roll = 0
 	var total = 0
 	

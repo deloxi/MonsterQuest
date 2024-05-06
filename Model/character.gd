@@ -2,12 +2,13 @@ class_name Character extends Creature
 
 var damage = randi_range(2, 6)
 var constitution: int = 5
+#var savingRolls: int = 0
+#var maxSavingRolls: int = 3
 @export var bodySprite: String
 @onready var attack_anim: AnimationPlayer
-@onready var weaponType: WeaponType
-@onready var armorType: ArmorType
 
-func _init(name: String, charClass: String, weapon: WeaponType, armor: ArmorType, health = 10) -> void:
+
+func _init(name: String, charClass: String, weapon: WeaponType, armor: ArmorType, health = 2) -> void:
 	displayName = name
 	hitPoints = health
 	hitPointsMaximum = health

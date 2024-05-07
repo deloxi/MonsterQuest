@@ -33,11 +33,36 @@ func attackTarget(dmg:int, target: Creature):
 	target.reactToDamage(dmg)
 	
 	
-func smartActions(target: Creature):
+func smartActions(target: Creature, strength: int, dexterity: int):
+	randomize()
+	#var instaKill: bool
+	var multiplier: int
+	var roll = randi_range(1,20)
 	var dmg = dice.roll(weaponType.dmgRoll)
-	
 	if hitPoints > 0:
-		attackTarget(dmg, target)
+		if target is Monster:
+			if weaponType.isRanged:
+				multiplier = dexterity
+			elif weaponType.isFinesse && dexterity > strength:
+				multiplier = dexterity
+			else:
+				multiplier = strength
+			if roll + multiplier > target.monster.armorClass:
+				dmg += multiplier
+				attackTarget(dmg, target)
+			else:
+				dmg = 0
+		elif target is Character:
+			if roll + strength > target.armorType.armorClass:
+				dmg += strength
+				if dmg >= target.hitPoints + target.hitPointsMaximum:
+					target.deathRolls = 3
+				else:
+					attackTarget(dmg, target)
+			else:
+				dmg = 0
+	
+		#attackTarget(dmg, target)
 	elif hitPoints == 0:
 		deathSaveRoll()
 	return dmg

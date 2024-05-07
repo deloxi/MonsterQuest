@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_oy6ob")
 dmgRoll = "1d8"
+isRanged = true
+isFinesse = false
 displayName = "Light Crossbow"
 weight = 5

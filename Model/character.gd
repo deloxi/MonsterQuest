@@ -1,14 +1,18 @@
 class_name Character extends Creature
 
-var damage = randi_range(2, 6)
-var constitution: int = 5
-#var savingRolls: int = 0
-#var maxSavingRolls: int = 3
+
+var strength: int = dice.roll("3d6+1")
+var dexterity: int = dice.roll("3d6+1")
+var constitution: int = dice.roll("3d6+1")
+var intelligence: int = dice.roll("3d6+1")
+var wisdom: int = dice.roll("3d6+1")
+var charisma: int = dice.roll("3d6+1")
+
 @export var bodySprite: String
 @onready var attack_anim: AnimationPlayer
 
 
-func _init(name: String, charClass: String, weapon: WeaponType, armor: ArmorType, health = 2) -> void:
+func _init(name: String, charClass: String, weapon: WeaponType, armor: ArmorType, health = 30) -> void:
 	displayName = name
 	hitPoints = health
 	hitPointsMaximum = health

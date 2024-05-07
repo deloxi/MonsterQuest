@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="MonsterType" load_steps=6 format=3 uid="uid://cldw1qg5lqwbf"]
+
+[ext_resource type="Script" path="res://Assets/MonsterType.gd" id="1_mbt7r"]
+[ext_resource type="Script" path="res://Assets/AbilityScores.gd" id="1_rfis6"]
+[ext_resource type="Texture2D" uid="uid://c6nud3xd7qqut" path="res://sprites/Azer.png" id="2_xnrms"]
+[ext_resource type="Resource" uid="uid://cxqmllfjugkmj" path="res://Assets/Database/Items/Weapons/Longsword.tres" id="4_7mn4c"]
+
+[sub_resource type="Resource" id="Resource_somaj"]
+script = ExtResource("1_rfis6")
+strength = 17
+dexterity = 12
+constitution = 15
+intelligence = 12
+wisdom = 13
+charisma = 10
+
+[resource]
+script = ExtResource("1_mbt7r")
+displayName = "Azer"
+sizeCategory = 1
+hpRoll = "6d8+120"
+armorClass = 17
+weaponType = ExtResource("4_7mn4c")
+bodySprite = ExtResource("2_xnrms")
+abilityScores = SubResource("Resource_somaj")

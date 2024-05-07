@@ -9,3 +9,4 @@ enum SizeCategory { SMALL, MEDIUM, LARGE, HUGE }
 @export var armorType: ArmorType
 @export var weaponType: WeaponType
 @export var bodySprite: Texture
+@export var abilityScores : AbilityScores

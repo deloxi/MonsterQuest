@@ -40,10 +40,10 @@ func SimulateBattle(gameState: GameState):
 		
 		var order = initiativeOrder(monster, gameState.party.partyList)
 		
-		while gameState.party.partyList.size() > 0:
+		while gameState.party.partyList.size() > 0 && monster.hitPoints > 0:
 			for creature in order:
 				#print(creature.get_child().get_class())
-				if (creature is Character) && !creature.lifeStatus.isDead:
+				if (creature is Character) && !creature.lifeStatus.isDead && monster.hitPoints > 0:
 					
 					
 					if creature.lifeStatus.canAttack:	
@@ -55,7 +55,7 @@ func SimulateBattle(gameState: GameState):
 					
 					#var damage = Dice.rollWithDice(1,5,1)
 					
-					var damage = creature.smartActions(monster)
+					var damage = creature.smartActions(monster, creature.strength, creature.dexterity)
 					#creature.attackTarget(5, monster) ## MARK HERE
 					
 					if monster.hitPoints > 0 && creature.lifeStatus.canAttack:
@@ -71,9 +71,27 @@ func SimulateBattle(gameState: GameState):
 					break
 						
 				elif creature is Monster:
-					var targetIndex = Dice.rollWithDice(1,gameState.party.partyList.size(),0)
-					var targetName = gameState.party.partyList[targetIndex-1]
+					var targetIndex
+					var targetName: Character
+					var targetLowestHp = 999
+					var amountUnconscious = 0
 					
+					#if monster.monster.abilityScores.intelligence >= 10: ## creature instead
+						#for character in gameState.party.partyList:
+								#if character.hitPoints < targetLowestHp && character.hitPoints > 0:
+									#targetName = character
+									#targetLowestHp = character.hitPoints
+								#else:
+									#amountUnconscious += 1
+									#if amountUnconscious >= 4:
+										#targetIndex = Dice.rollWithDice(1,gameState.party.partyList.size(),0)
+										#targetName = gameState.party.partyList[targetIndex-1]
+									#
+					#else:
+					targetIndex = Dice.rollWithDice(1,gameState.party.partyList.size(),0)
+					targetName = gameState.party.partyList[targetIndex-1]
+
+
 					var targetPos = targetName.get_parent().global_position
 					var monsterPos = monster.get_parent().global_position
 					var direction = targetPos-monsterPos
@@ -103,11 +121,11 @@ func SimulateBattle(gameState: GameState):
 					attackDelay.one_shot = true
 					attackDelay.start(0.1)
 					
-					monster.smartActions(targetName)
+					var damage = monster.smartActions(targetName, monster.monster.abilityScores.strength, monster.monster.abilityScores.dexterity)
 					#monster.attackTarget(targetName)
 					
 										
-					consoleRef.printLine("The " + monster.displayName + " attacks " + targetName.displayName + "!")
+					consoleRef.printLine("The " + monster.displayName + " attacks " + targetName.displayName + " for " + str(damage) + " damage!")
 
 					#var constitution = 5
 					#var saveRoll = Dice.rollWithDice(1,20,0)
@@ -126,9 +144,12 @@ func SimulateBattle(gameState: GameState):
 					if targetName.lifeStatus == preload("res://Assets/Database/States/Unconscious.tres"):
 						targetName.deathSaveRoll()
 
-						if targetName.deathRolls >= 3:
-							targetName.get_parent().self_modulate = Color(0,0,0)				
-							gameState.party.partyList.erase(targetName) ## ADD THIS BACK IF NOT WORKING
+					elif targetName.deathRolls >= 3:
+						targetName.hitPoints = 0
+						targetName.takeDamage()
+						targetName.get_parent().self_modulate = Color(0,0,0)	
+						order.erase(targetName)
+						gameState.party.partyList.erase(targetName) ## ADD THIS BACK IF NOT WORKING
 						
 					elif targetName.hitPoints <= 0:
 						consoleRef.printLine(targetName.displayName + " was knocked unconscious.")

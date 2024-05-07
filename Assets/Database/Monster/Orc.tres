@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MonsterType" load_steps=7 format=3 uid="uid://ccrt05tbb7suq"]
+
+[ext_resource type="Script" path="res://Assets/AbilityScores.gd" id="1_eto2b"]
+[ext_resource type="Resource" uid="uid://b2k3mlpvc7tnq" path="res://Assets/Database/Items/Armor/Hide.tres" id="2_ijc65"]
+[ext_resource type="Texture2D" uid="uid://8tcmwelpbm21" path="res://sprites/Orc.png" id="3_5ojjd"]
+[ext_resource type="Script" path="res://Assets/MonsterType.gd" id="4_b7oes"]
+[ext_resource type="Resource" uid="uid://cxqmllfjugkmj" path="res://Assets/Database/Items/Weapons/Longsword.tres" id="5_7tmtx"]
+
+[sub_resource type="Resource" id="Resource_87ve0"]
+script = ExtResource("1_eto2b")
+strength = 16
+dexterity = 12
+constitution = 16
+intelligence = 7
+wisdom = 11
+charisma = 10
+
+[resource]
+script = ExtResource("4_b7oes")
+displayName = "Orc"
+sizeCategory = 1
+hpRoll = "2d6+6"
+armorClass = 12
+armorType = ExtResource("2_ijc65")
+weaponType = ExtResource("5_7tmtx")
+bodySprite = ExtResource("3_5ojjd")
+abilityScores = SubResource("Resource_87ve0")

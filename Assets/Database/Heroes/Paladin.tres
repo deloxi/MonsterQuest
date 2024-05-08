@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CharacterType" load_steps=2 format=3 uid="uid://crbgn85bc0mcs"]
+
+[ext_resource type="Script" path="res://Assets/CharacterType.gd" id="1_oy6k0"]
+
+[resource]
+script = ExtResource("1_oy6k0")
+className = "Paladin"
+strength = 5
+dexterity = 5
+constitution = 5
+intelligence = 5
+wisdom = 5
+charisma = 5

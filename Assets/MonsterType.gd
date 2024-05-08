@@ -8,5 +8,6 @@ enum SizeCategory { SMALL, MEDIUM, LARGE, HUGE }
 @export var armorClass: int = 12
 @export var armorType: ArmorType
 @export var weaponType: WeaponType
+@export var WeaponsList: Array[WeaponType] = []
 @export var bodySprite: Texture
 @export var abilityScores : AbilityScores

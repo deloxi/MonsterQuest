@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="MonsterType" load_steps=6 format=3 uid="uid://tb1lc0ld6vw5"]
+[gd_resource type="Resource" script_class="MonsterType" load_steps=7 format=3 uid="uid://tb1lc0ld6vw5"]
 
 [ext_resource type="Texture2D" uid="uid://clucdum7vuwbd" path="res://sprites/Young red dragon.png" id="1_s6sih"]
 [ext_resource type="Script" path="res://Assets/AbilityScores.gd" id="1_t2tdd"]
 [ext_resource type="Script" path="res://Assets/MonsterType.gd" id="1_wh42s"]
-[ext_resource type="Resource" uid="uid://cijya22gouatq" path="res://Assets/Database/Items/Weapons/Greataxe.tres" id="3_8463o"]
+[ext_resource type="Resource" uid="uid://bxikibwm41wn4" path="res://Assets/Database/Items/Weapons/Bite.tres" id="2_yd7wu"]
+[ext_resource type="Resource" uid="uid://cnsyai5wy47m8" path="res://Assets/Database/Items/Weapons/Claw.tres" id="4_ek7ps"]
 
 [sub_resource type="Resource" id="Resource_b3l3f"]
 script = ExtResource("1_t2tdd")
@@ -20,6 +21,7 @@ displayName = "Young Red Dragon"
 sizeCategory = 3
 hpRoll = "17d10+850"
 armorClass = 18
-weaponType = ExtResource("3_8463o")
+weaponType = ExtResource("4_ek7ps")
+WeaponsList = Array[Resource("res://Assets/WeaponType.gd")]([ExtResource("4_ek7ps"), ExtResource("2_yd7wu")])
 bodySprite = ExtResource("1_s6sih")
 abilityScores = SubResource("Resource_b3l3f")

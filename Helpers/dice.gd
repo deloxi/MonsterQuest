@@ -54,7 +54,10 @@ func parse_dice_string(dice_string:String):
 		
 	dice_sides = int(dice_parts[-1])
 	
-func roll(diceString: String) -> int:
+func roll(diceString: String, removeLowest: bool = false) -> int:
+	var lowestDiceNum: int = 99
+	
+	
 	parse_dice_string(diceString)
 	rolls.clear()
 	var total = 0
@@ -62,7 +65,12 @@ func roll(diceString: String) -> int:
 		var roll = _random.randi_range(1, dice_sides)
 		rolls.append(roll)
 		total += roll
-	return total+modifier
+		if roll < lowestDiceNum:
+			lowestDiceNum = roll
+	if 	!removeLowest:
+		return total+modifier
+	else:
+		return total+modifier-lowestDiceNum
 
 
 static func rollWithDice(diceAmount, diceSides, modifier):

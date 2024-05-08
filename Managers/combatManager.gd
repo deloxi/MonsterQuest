@@ -32,10 +32,10 @@ func SimulateBattle(gameState: GameState):
 	
 	var fixedNames = stringHelper.joinWithAnd(gameState.party.partyList)
 	#var fixedNames = stringHelper.joinWithAnd(names)
-	consoleRef.printLine("A party of warriors "+ str(fixedNames) +" decends into the dungeon")
+	consoleRef.printLine("A party of warriors "+ str(fixedNames) +" decends into the dungeon.")
 	
 	for monster in monsters:
-		consoleRef.printLine("A "+monster.displayName + " with "+ str(monster.hitPoints) + " HP appears")
+		consoleRef.printLine("Watch out "+monster.displayName.to_lower() + " with "+ str(monster.hitPoints) + " HP appears.")
 		monster_slot.add_child(monster)
 		
 		var order = initiativeOrder(monster, gameState.party.partyList)
@@ -60,36 +60,36 @@ func SimulateBattle(gameState: GameState):
 					
 					if monster.hitPoints > 0 && creature.lifeStatus.canAttack:
 						print(creature.weaponType.displayName)
-						consoleRef.printLine(creature.displayName + " hits the " + monster.displayName + " for " + str(damage) +  " damage with " + creature.weaponType.displayName + ", " + monster.displayName + " has " + str(monster.hitPoints) + " HP left.")
+						consoleRef.printLine(creature.displayName + " hits the " + monster.displayName.to_lower() + " for " + str(damage) +  " damage with " + creature.weaponType.displayName.to_lower() + ", " + monster.displayName.to_lower() + " has " + str(monster.hitPoints) + " HP left.")
 				
 					elif monster.hitPoints <= 0 && creature.lifeStatus.canAttack:
-						consoleRef.printLine(creature.displayName + " hits the " + monster.displayName + " for " + str(damage) + " damage which kills it using " + creature.weaponType.displayName)
+						consoleRef.printLine(creature.displayName + " hits the " + monster.displayName.to_lower() + " for " + str(damage) + " damage which kills it using " + creature.weaponType.displayName.to_lower() + ".")
 						break
 						
 				if monster.hitPoints <= 0:
 					#monster.takeDamage()
 					break
 						
-				elif creature is Monster:
+				if creature is Monster:
 					var targetIndex
 					var targetName: Character
 					var targetLowestHp = 999
 					var amountUnconscious = 0
 					
-					#if monster.monster.abilityScores.intelligence >= 10: ## creature instead
-						#for character in gameState.party.partyList:
-								#if character.hitPoints < targetLowestHp && character.hitPoints > 0:
-									#targetName = character
-									#targetLowestHp = character.hitPoints
-								#else:
-									#amountUnconscious += 1
-									#if amountUnconscious >= 4:
-										#targetIndex = Dice.rollWithDice(1,gameState.party.partyList.size(),0)
-										#targetName = gameState.party.partyList[targetIndex-1]
-									#
-					#else:
-					targetIndex = Dice.rollWithDice(1,gameState.party.partyList.size(),0)
-					targetName = gameState.party.partyList[targetIndex-1]
+					if monster.monster.abilityScores.intelligence >= 10: ## creature instead
+						for character in gameState.party.partyList:
+								if character.hitPoints < targetLowestHp && character.hitPoints > 0:
+									targetName = character
+									targetLowestHp = character.hitPoints
+								else:
+									amountUnconscious += 1
+									if amountUnconscious >= gameState.party.partyList.size():
+										targetIndex = Dice.rollWithDice(1,gameState.party.partyList.size(),0)
+										targetName = gameState.party.partyList[targetIndex-1]
+									
+					else:
+						targetIndex = Dice.rollWithDice(1,gameState.party.partyList.size(),0)
+						targetName = gameState.party.partyList[targetIndex-1]
 
 
 					var targetPos = targetName.get_parent().global_position
@@ -125,7 +125,7 @@ func SimulateBattle(gameState: GameState):
 					#monster.attackTarget(targetName)
 					
 										
-					consoleRef.printLine("The " + monster.displayName + " attacks " + targetName.displayName + " for " + str(damage) + " damage!")
+					consoleRef.printLine("The " + monster.displayName.to_lower() + " attacks " + targetName.displayName + " for " + str(damage) + " damage!")
 
 					#var constitution = 5
 					#var saveRoll = Dice.rollWithDice(1,20,0)
@@ -166,11 +166,11 @@ func SimulateBattle(gameState: GameState):
 					consoleRef.printLine(creature.displayName + " died")
 
 		if monster.hitPoints > 0:
-			consoleRef.printLine("Your party has died and the " + monster.displayName + " will ravish the lands!")
+			consoleRef.printLine("Your party has died and the " + monster.displayName.to_lower() + " will ravish the lands!")
 			await nextPlayer
 		else:
 			var remainingNames = stringHelper.joinWithAnd(gameState.party.partyList)
-			consoleRef.printLine("The " + monster.displayName + " collapses and " + remainingNames + " move on!")
+			consoleRef.printLine("The " + monster.displayName.to_lower() + " collapses and " + remainingNames + " move on!")
 			monster.get_parent().self_modulate = Color(1,0,0)
 			monster_slot.remove_child(monster)
 			attackDelay.one_shot = true

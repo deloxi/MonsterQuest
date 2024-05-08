@@ -1,16 +1,15 @@
 class_name Character extends Creature
 
 
-var strength: int = dice.roll("3d6+1")
-var dexterity: int = dice.roll("3d6+1")
-var constitution: int = dice.roll("3d6+1")
-var intelligence: int = dice.roll("3d6+1")
-var wisdom: int = dice.roll("3d6+1")
-var charisma: int = dice.roll("3d6+1")
+var strength: int = dice.roll("4d6", true)
+var dexterity: int = dice.roll("4d6", true)
+var constitution: int = dice.roll("4d6", true)
+var intelligence: int = dice.roll("4d6", true)
+var wisdom: int = dice.roll("4d6", true)
+var charisma: int = dice.roll("4d6", true)
 
 @export var bodySprite: String
 @onready var attack_anim: AnimationPlayer
-
 
 func _init(name: String, charClass: String, weapon: WeaponType, armor: ArmorType, health = 30) -> void:
 	displayName = name
@@ -19,6 +18,9 @@ func _init(name: String, charClass: String, weapon: WeaponType, armor: ArmorType
 	bodySprite = charClass
 	weaponType = weapon
 	armorType = armor
+	#strength = Dice.new().roll("3d6+1")
+	
+	
 	print(name)
 	
 func _ready() -> void:

@@ -17,9 +17,10 @@ charisma = 10
 [resource]
 script = ExtResource("1_mbt7r")
 displayName = "Azer"
-sizeCategory = 1
-hpRoll = "6d8+120"
+sizeCategory = null
+hpRoll = "6d8+12"
 armorClass = 17
 weaponType = ExtResource("4_7mn4c")
+multipleWeaponsList = Array[Resource("res://Assets/WeaponType.gd")]([null])
 bodySprite = ExtResource("2_xnrms")
 abilityScores = SubResource("Resource_somaj")

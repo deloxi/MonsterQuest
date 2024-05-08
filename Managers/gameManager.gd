@@ -11,7 +11,7 @@ extends Node
 @onready var monster_slot: Sprite2D = $Node2D/MonsterSlot
 var mm:MonsterManual = MonsterManual.new()
 var monstersAttacking = []
-
+var _save: SaveGame
 
 func _ready():
 	mm.parse_monster_file("res://Model/MonsterManual.txt")

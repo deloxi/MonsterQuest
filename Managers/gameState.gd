@@ -1,10 +1,10 @@
 extends Node
 class_name GameState
 
-var party = Party
+var party = []
 var monsters = []
 
-func _init(currentParty: Party, currentMonster: Array ):
+func _init(currentParty: Array, currentMonster: Array ):
 	party = currentParty
 	monsters = currentMonster
 

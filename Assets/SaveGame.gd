@@ -6,6 +6,11 @@ const SAVE_GAME_PATH: String = "user://save.tres"
 #@export var currentMonsterList: MonsterType #Array[MonsterType] = []
 
 @export var p1Name: String
+@export var p1TurnOrder: int
+@export var p1Conscious: bool
+@export var p1Dead: bool
+@export var p1SavingRolls: int
+@export var p1DeathRolls: int
 @export var p1Health: int
 @export var p1HealthMaximum: int
 @export var p1Strength: int
@@ -16,6 +21,11 @@ const SAVE_GAME_PATH: String = "user://save.tres"
 @export var p1Charisma: int
 @export var string1 = "-------"
 @export var p2Name: String
+@export var p2TurnOrder: int
+@export var p2Conscious: bool
+@export var p2Dead: bool
+@export var p2SavingRolls: int
+@export var p2DeathRolls: int
 @export var p2Health: int
 @export var p2HealthMaximum: int
 @export var p2Strength: int
@@ -26,6 +36,12 @@ const SAVE_GAME_PATH: String = "user://save.tres"
 @export var p2Charisma: int
 @export var string2 = "-------"
 @export var p3Name: String
+@export var p3TurnOrder: int
+@export var p3Conscious: bool
+@export var p3UnConscious: bool
+@export var p3Dead: bool
+@export var p3SavingRolls: int
+@export var p3DeathRolls: int
 @export var p3Health: int
 @export var p3HealthMaximum: int
 @export var p3Strength: int
@@ -36,6 +52,11 @@ const SAVE_GAME_PATH: String = "user://save.tres"
 @export var p3Charisma: int
 @export var string3 = "-------"
 @export var p4Name: String
+@export var p4TurnOrder: int
+@export var p4Conscious: bool
+@export var p4Dead: bool
+@export var p4SavingRolls: int
+@export var p4DeathRolls: int
 @export var p4Health: int
 @export var p4HealthMaximum: int
 @export var p4Strength: int
@@ -46,6 +67,7 @@ const SAVE_GAME_PATH: String = "user://save.tres"
 @export var p4Charisma: int
 @export var string4 = "-------"
 @export var mName: String
+@export var mTurnOrder: int
 @export var mHealth: int
 @export var mHealthMaximum: int
 @export var mStrength: int
@@ -56,6 +78,7 @@ const SAVE_GAME_PATH: String = "user://save.tres"
 @export var mCharisma: int
 @export var string5 = "-------"
 @export var m2Name: String
+@export var m2TurnOrder: int
 @export var m2Health: int
 @export var m2HealthMaximum: int
 @export var m2Strength: int
@@ -66,6 +89,7 @@ const SAVE_GAME_PATH: String = "user://save.tres"
 @export var m2Charisma: int
 @export var string6 = "-------"
 @export var m3Name: String
+@export var m3TurnOrder: int
 @export var m3Health: int
 @export var m3HealthMaximum: int
 @export var m3Strength: int
@@ -74,7 +98,8 @@ const SAVE_GAME_PATH: String = "user://save.tres"
 @export var m3Intelligence: int
 @export var m3Wisdom: int
 @export var m3Charisma: int
-
+@export var string7 = "-------"
+@export var currentTurn: int
 
 func write_savegame() -> void:
 	ResourceSaver.save(self, SAVE_GAME_PATH)

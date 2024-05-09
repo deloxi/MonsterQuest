@@ -7,6 +7,7 @@ var savingRolls: int = 0
 var maxSavingRolls: int = 3
 var deathRolls: int = 0
 var maxDeathRolls: int = 3
+var turnOrder: int = 99
 var lifeStatus: LifeStatusType = preload("res://Assets/Database/States/Conscious.tres")
 const LIFE_SAVING_THROW = preload("res://life_saving_throw.tscn")
 const DEATH_SAVING_THROW = preload("res://death_saving_throw.tscn")
@@ -15,6 +16,7 @@ const DEATH_SAVING_THROW = preload("res://death_saving_throw.tscn")
 var weaponType: WeaponType = preload("res://Assets/Database/Items/Weapons/Greataxe.tres") ## THIS MESSES UP DRAGON WEAPON
 @onready var armorType: ArmorType
 var dice = Dice.new()
+@onready var saveThrowBox = get_parent().get_node("SaveThrowBox")
 
 func _ready() -> void:
 	var node = get_node(".")
@@ -67,10 +69,15 @@ func smartActions(target: Creature, strength: int, dexterity: int):
 		deathSaveRoll()
 	return dmg
 	
+func deathRollPrint():
+	saveThrowBox.add_child(DEATH_SAVING_THROW.instantiate())
+	
+func lifeRollPrint():
+	saveThrowBox.add_child(LIFE_SAVING_THROW.instantiate())
+	
 func deathSaveRoll():
 	randomize()
 	var roll = randi_range(1,20)
-	var saveThrowBox = get_parent().get_node("SaveThrowBox")
 	get_parent().get_node("DiceSprite/DiceLabel").text = str(roll)
 	get_parent().get_node("DiceSprite/DiceToss").play("dice_toss")
 	

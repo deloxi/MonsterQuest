@@ -3,6 +3,12 @@ class_name Monster extends Creature
 var savingThrowDC: int
 var monster: MonsterType
 var size
+var strength: int
+var dexterity: int
+var constitution: int
+var intelligence: int
+var wisdom: int
+var charisma: int
 #var dice: Dice = Dice.new()
 var tween = Tween.new()
 @onready var attack_anim: AnimationPlayer = $AttackAnim
@@ -11,8 +17,10 @@ func _init(m: MonsterType):
 	monster = m
 	displayName = m.displayName
 	hitPoints = dice.roll(m.hpRoll)
+	m.hitPoints = hitPoints
 	savingThrowDC = m.armorClass
 	hitPointsMaximum = hitPoints
+	m.hitPointsMaximum = hitPointsMaximum
 	size = m.sizeCategory
 
 # Called when the node enters the scene tree for the first time.

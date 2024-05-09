@@ -23,6 +23,6 @@ hpRoll = "2d6+6"
 armorClass = 12
 armorType = ExtResource("2_ijc65")
 weaponType = ExtResource("5_7tmtx")
-multipleWeaponsList = [null]
+WeaponsList = Array[Resource("res://Assets/WeaponType.gd")]([])
 bodySprite = ExtResource("3_5ojjd")
 abilityScores = SubResource("Resource_87ve0")

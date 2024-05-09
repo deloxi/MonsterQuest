@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CharacterType" load_steps=5 format=3 uid="uid://c4ve5rbveyhl5"]
+
+[ext_resource type="Script" path="res://Assets/CharacterType.gd" id="1_ebggd"]
+[ext_resource type="Resource" uid="uid://4i1fx7rtenr5" path="res://Assets/Database/Items/Armor/StuddedLeather.tres" id="1_o6wo2"]
+[ext_resource type="Texture2D" uid="uid://c15e30f35i52i" path="res://sprites/Mage.png" id="2_y5slx"]
+[ext_resource type="Resource" uid="uid://ggk2fo0ofyt4" path="res://Assets/Database/Items/Weapons/Shortsword.tres" id="4_34vgb"]
+
+[resource]
+script = ExtResource("1_ebggd")
+className = "Mage"
+armorType = ExtResource("1_o6wo2")
+weaponType = ExtResource("4_34vgb")
+bodySprite = ExtResource("2_y5slx")
+health = 0
+strength = 0
+dexterity = 0
+constitution = 0
+intelligence = 0
+wisdom = 0
+charisma = 0

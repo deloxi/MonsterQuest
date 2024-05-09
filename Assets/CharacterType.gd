@@ -10,11 +10,10 @@ var dice = Dice.new()
 #@export var WeaponsList: Array[WeaponType] = []
 @export var bodySprite: Texture
 #@export var abilityScores : AbilityScores
-
-@export var health: int = 5
-@export var strength: int = 5
-@export var dexterity: int = 5
-@export var constitution: int = 5
-@export var intelligence: int = 5
-@export var wisdom: int = 5
-@export var charisma: int = 5
+@export var health: int
+@export var strength: int
+@export var dexterity: int
+@export var constitution: int
+@export var intelligence: int
+@export var wisdom: int
+@export var charisma: int

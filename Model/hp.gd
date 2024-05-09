@@ -12,3 +12,8 @@ func _process(delta: float) -> void:
 	var ratio = 330*(1-currentHealth/maxHealth)
 	$Mask.offset.y = ratio
 
+func hpUpdate():
+	print(currentHealth)
+	print(maxHealth)
+	var ratio = 330*(1-currentHealth/maxHealth)
+	$Mask.offset.y = ratio

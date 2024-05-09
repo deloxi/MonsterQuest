@@ -17,6 +17,7 @@ func _ready():
 	attackDelay.connect("timeout", _onNextPlayer)
 	add_child(attackDelay)
 	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -35,6 +36,7 @@ func SimulateBattle(gameState: GameState):
 	consoleRef.printLine("A party of warriors "+ str(fixedNames) +" decends into the dungeon.")
 	
 	for monster in monsters:
+		print(monster)		
 		consoleRef.printLine("Watch out "+monster.displayName.to_lower() + " with "+ str(monster.hitPoints) + " HP appears.")
 		monster_slot.add_child(monster)
 		
